@@ -1,15 +1,13 @@
 <template>
   <div class="order">
     <div class="top">
-      <van-tabs v-model="active" @change="tabChangeHandler" class="tabs" swipe-threshold="5">
+      <van-tabs v-model="active" @change="tabChangeHandler" class="tabs" :swipe-threshold="5">
         <van-tab title="全部订单"></van-tab>
-        <van-tab title="待接单"></van-tab>
         <van-tab title="待服务"></van-tab>
         <van-tab title="待确认"></van-tab>
         <van-tab title="已完成"></van-tab>
       </van-tabs>
     </div>
-    <van-loading v-show="loding" style="margin:300px 0; text-align:center;" color="#ee0a24">加载中...</van-loading>
     <div class="container">
       <van-panel v-for="o in order" :key="o.id" :title="'订单号:'+o.id" :status="o.status">
         <div style="font-size:14px; color:darkgray; margin:10px 20px;line-height:20px;">
@@ -35,10 +33,7 @@ export default {
     }
   },
   created(){
-    setTimeout(()=>{
-      this.findAllOrder()
-      this.loding = false
-    },1000)
+    this.findAllOrder()
   },
   computed:{
     ...mapState("order",["orders"]),
@@ -50,12 +45,10 @@ export default {
       if(this.active == 0){
         this.order = this.orders
       }else if(this.active == 1){
-        this.order = this.orders.filter((order)=>{return order.status==="待接单"})
+        this.order = this.orders.filter((order)=>{return order.status==="待派单"||order.status==="待接单"||order.status==="待服务"})
       }else if(this.active == 2){
-        this.order = this.orders.filter((order)=>{return order.status==="待服务"})
-      }else if(this.active == 3){
         this.order = this.orders.filter(o=>o.status=="待确认")
-      }else if(this.active == 4){
+      }else if(this.active == 3){
         this.order = this.orders.filter(o=>o.status=="已完成")
       }
     },
