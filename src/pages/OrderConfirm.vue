@@ -12,7 +12,7 @@
       <van-row style="margin:10px 0;">
         <van-col span="4" style="font-size:25px; padding:10px 0 0 10px;"><van-icon name="location-o" /></van-col>
         <van-col span="20">
-          <div style="margin-bottom:5px;">服务地址:</div>
+          <div style="margin-bottom:5px;">配送地址:</div>
           <div style="color:darkgray;">{{info.name}} {{addresses[0].telephone}}</div>
           <div style="color:darkgray;">{{addresses[0].province}} {{addresses[0].city}} {{addresses[0].area}} {{addresses[0].address}}</div>
         </van-col>
@@ -38,7 +38,7 @@
       <van-row  style="margin:10px 0;">
         <van-col span="4" style="font-size:25px; padding:10px 0 0 10px;"><van-icon name="clock-o" /></van-col>
         <van-col span="20">
-          <div style="margin-bottom:5px;">服务时间:</div>
+          <div style="margin-bottom:5px;">下单时间:</div>
           <div style="color:darkgray;">{{newDate}}</div>
         </van-col>
       </van-row>
@@ -60,7 +60,7 @@ import { mapState, mapActions,mapGetters } from 'vuex'
 export default {
   data(){
     return {
-      newDate:moment().format('YYYY-MM-DD, HH:mm:ss')
+      newDate:moment().format('YYYY-MM-DD HH:mm:ss')
     }
   },
   created(){
@@ -83,10 +83,9 @@ export default {
       let addressId = this.addresses[0].id
       let orderLines = this.orderLines
       let data = {customerId,addressId,orderLines}
-      console.log(data)
       this.saveOrder(data)
       .then((response)=>{
-        this.$toast({ message:"确认成功",duration: 700 })
+        this.$toast({ message:"下单成功",duration: 700 })
         this.$router.push({path:'/manager/order'})
       })
     }

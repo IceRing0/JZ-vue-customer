@@ -3,7 +3,7 @@
     <div class="top">
       <van-tabs v-model="active" @change="tabChangeHandler" class="tabs" :swipe-threshold="5">
         <van-tab title="全部订单"></van-tab>
-        <van-tab title="待服务"></van-tab>
+        <van-tab title="待配送"></van-tab>
         <van-tab title="待确认"></van-tab>
         <van-tab title="已完成"></van-tab>
       </van-tabs>

@@ -9,25 +9,29 @@
       />
     </van-sticky>
     <van-row>
-      <van-sticky :offset-top="45">
-        <van-sidebar v-model="activeKey">
-          <van-sidebar-item @click="categoryId=c.id" v-for="c in categories" :key="c.id" :title="c.name"/>
-        </van-sidebar>
-      </van-sticky>
-      <div style="float: left;margin-left:100px;position: relative;bottom:400px;right:10px;width:75%;">
-        <van-card
-          v-for="p in findProductByCategoryId(categoryId)"
-          :key="p.id"
-          :price="p.price"
-          :desc="p.description"  
-          :title="p.name"
-          :thumb="p.photo"
-        >
-        <div slot="footer">
-          <van-stepper v-model="p.number" :key="p.id" :min="0" @change="numberChangeHandler(p)"/>
+      <van-col span="6">
+        <van-sticky :offset-top="45">
+          <van-sidebar v-model="activeKey">
+            <van-sidebar-item @click="categoryId=c.id" v-for="c in categories" :key="c.id" :title="c.name"/>
+          </van-sidebar>
+        </van-sticky>
+      </van-col>
+      <van-col span="18">
+        <div>
+          <van-card
+            v-for="p in findProductByCategoryId(categoryId)"
+            :key="p.id"
+            :price="p.price"
+            :desc="p.description"  
+            :title="p.name"
+            :thumb="p.photo"
+          >
+          <div slot="footer">
+            <van-stepper v-model="p.number" :key="p.id" :min="0" @change="numberChangeHandler(p)"/>
+          </div>
+          </van-card>
         </div>
-        </van-card>
-      </div>
+      </van-col>
     </van-row>
     <van-submit-bar
       :price="total*100"
