@@ -1,8 +1,8 @@
 <template>
   <div class="login">
     <div class="title">
-      <h2>EJ家政服务平台</h2>
-      <h3>客户端</h3>
+      <h2>云边小卖铺</h2>
+      <h3>顾客端</h3>
     </div>
     <div class="container">
       <van-cell-group>
@@ -30,7 +30,7 @@
         <van-button size="small" type="info">注册</van-button>
       </van-col>
       <van-col span="5">
-        <van-button size="small" type="primary" @click="loginHandler">登录</van-button>
+        <van-button size="small" type="danger" @click="loginHandler">登录</van-button>
       </van-col>
     </van-row>
     </div>
@@ -62,7 +62,7 @@ export default {
 </script>
 <style scoped>
   .title {
-    color:#1989fa;
+    color:#ee0a24;
     text-align: center;
     margin-top: 150px;
   }

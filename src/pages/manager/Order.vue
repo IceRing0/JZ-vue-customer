@@ -1,6 +1,9 @@
 <template>
   <div class="order">
     <div class="top">
+      <van-nav-bar
+        title="我的订单"
+      />
       <van-tabs v-model="active" @change="tabChangeHandler" class="tabs" :swipe-threshold="5">
         <van-tab title="全部订单"></van-tab>
         <van-tab title="待配送"></van-tab>

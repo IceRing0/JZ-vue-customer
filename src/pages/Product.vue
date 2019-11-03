@@ -2,7 +2,7 @@
   <div class="product">
     <van-sticky>
       <van-nav-bar
-        title="产品分类"
+        title="零食分类"
         left-text="返回"
         left-arrow
         @click-left="onClickLeft"
